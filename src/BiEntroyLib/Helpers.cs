@@ -36,6 +36,16 @@ namespace SMC.Numerics.BiEntropy
             }
         }
 
+        public static double CalculateP(BitArray value, int k)
+        {
+            var derivative = BinaryDerivative(value, k);
+            var ones = 0;
+            for (var i = 0; i < value.Count; i++)
+                if (value[i]) ones++;
+
+            return ones / (double)value.Count;
+        }
+
         public static int BitArrayToInteger(BitArray value)
         {
             if (value.Length > 32)
