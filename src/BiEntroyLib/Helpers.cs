@@ -3,9 +3,40 @@ using System.Collections;
 
 namespace SMC.Numerics.BiEntropy
 {
-    internal static class Helpers
+    public static class Helpers
     {
-        internal static int BitArrayToInteger(BitArray value)
+        public static BitArray BinaryDerivative(BitArray value)
+        {
+            try
+            {
+                var result = new bool[value.Length - 1];
+                for (var index = 0; index < value.Length - 1; index++)
+                    result[index] = value[index] ^ value[index + 1];
+
+                return new BitArray(result);//.Some();
+            }
+            catch
+            {
+                return new BitArray(0);// Option.None<BitArray>();
+            }
+        }
+
+        public static BitArray BinaryDerivative(BitArray value, int k)
+        {
+            try
+            {
+                if (0 == k) return value;
+                if (1 == k) return BinaryDerivative(value);
+
+                return BinaryDerivative(BinaryDerivative(value, k - 1));//.ValueOr(new BitArray(0)));
+            }
+            catch
+            {
+                return new BitArray(0);
+            }
+        }
+
+        public static int BitArrayToInteger(BitArray value)
         {
             if (value.Length > 32)
                 throw new ArgumentOutOfRangeException(nameof(value), $"Argument cannot be more than 32-bits (Found: {value.Length} bits).");

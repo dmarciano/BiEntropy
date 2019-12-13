@@ -8,6 +8,33 @@ namespace BiEntropyLib.Tests
     public class BiEntropyTests
     {
         [TestMethod]
+        public void FirstBinaryDerivativeTest()
+        {
+            var arr = new BitArray(new[] { false, true, false, true, false, true, false, true });
+            var result = Helpers.BinaryDerivative(arr, 1);
+            var value = Helpers.BitArrayToInteger(result);
+            Assert.AreEqual(value, 127);
+        }
+
+        [TestMethod]
+        public void ThirdBinaryDerivativeTest()
+        {
+            var arr = new BitArray(new[] { false, false, false, true, false, false, false, true });
+            var result = Helpers.BinaryDerivative(arr, 3);
+            var value = Helpers.BitArrayToInteger(result);
+            Assert.AreEqual(value, 31);
+        }
+
+        [TestMethod]
+        public void SixthBinaryDerivativeTest()
+        {
+            var arr = new BitArray(new[] { false, false, false, true, true, true, true, true });
+            var result = Helpers.BinaryDerivative(arr, 6);
+            var value = Helpers.BitArrayToInteger(result);
+            Assert.AreEqual(value, 2);
+        }
+
+        [TestMethod]
         public void TwoBitBitArrayConstantTest()
         {
             var arr0 = new BitArray(new[] { false, false }); 
