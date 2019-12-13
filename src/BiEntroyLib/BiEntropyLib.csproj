@@ -7,8 +7,8 @@
     <ProjectGuid>{85A96E2F-3809-4ED0-ABD7-2428A457EA22}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SMC.Numerics.BiEntroyLib</RootNamespace>
-    <AssemblyName>SMC.Numerics.BiEntroyLib</AssemblyName>
+    <RootNamespace>SMC.Numerics.BiEntropy</RootNamespace>
+    <AssemblyName>SMC.Numerics.BiEntropyLib</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BiEntropy.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
