@@ -5,11 +5,11 @@ namespace SMC.Numerics.BiEntropy
 {
     public static class BiEntropy
     {
-        public static double Calculate(BitArray value, bool useConstantIfAvailable = true)
+        public static double Calculate(BitArray value, uint precision = 2, bool useConstantIfAvailable = true)
         {
             try
             {
-                if (value.Length > 32) return TresBiEntropy.Calculate(value, useConstantIfAvailable);
+                if (value.Length > 32) return TresBiEntropy.Calculate(value, precision, useConstantIfAvailable);
 
                 if (useConstantIfAvailable && (value.Length == 2 || value.Length == 4 || value.Length == 8))
                 {
@@ -43,7 +43,7 @@ namespace SMC.Numerics.BiEntropy
 
     public static class TresBiEntropy
     {
-        public static double Calculate(BitArray value, bool useConstantIfAvailable = true)
+        public static double Calculate(BitArray value, uint precision = 2, bool useConstantIfAvailable = true)
         {
             try
             {
