@@ -41,3 +41,21 @@ For binary strings longer than 32-bits (i.e. ```n > 32```) the following algorit
 The library contains two static classes; ```BiEntropy``` and ```TresBiEntropy``` each which has a ```Calculate``` method.
 
 If ```BiEntropy.Calculate``` is called with a binary string that contains more than 32-bits, it will automatically forward the call to the ```TresBiEntropy.Calculate``` method.
+
+## Unit Test
+The unit tests included in the solution covers all the test vectors provided in the original paper.  The units tests have been designed to ensure that the values calculated by the library are within
+0.1% of the test vectors when rounded to two decimal places, although in most cases the values (when rounded) are exactly the same as the values in the paper.
+
+## Versions
+**1.0.0** - Initial Release
+- Full implementation of the BiEntropy and Tres BiEntropy algorithms
+- Extension methods for easier useage
+- Full unit testing of all test vectors
+
+This project uses [SemVer](http://semver.org) for versioning.
+
+## Authors
+- Dominick Marciano Jr.
+
+## License
+Copyright (c) 2019 Dominick Marciano Jr., Sci-Med Coding.  All rights reserved

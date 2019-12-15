@@ -40,10 +40,10 @@ namespace SMC.Numerics.BiEntropy
         {
             var derivative = BinaryDerivative(value, k);
             var ones = 0;
-            for (var i = 0; i < value.Count; i++)
-                if (value[i]) ones++;
+            for (var i = 0; i < derivative.Count; i++)
+                if (derivative[i]) ones++;
 
-            return ones / (double)value.Count;
+            return ones / (double)derivative.Count;
         }
 
         public static int BitArrayToInteger(BitArray value)
