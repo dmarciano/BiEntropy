@@ -10,9 +10,11 @@ namespace BiEntropyLib.Tests
     public class BiEntropyTests
     {
         [TestMethod]
-        public void AAA()
+        public void CharacterConstantTest()
         {
-                var result = BiEntropy.Calculate((double)18446.744073709551616);
+            var value101 = BiEntropy.Calculate('e', useConstantIfAvailable: true);
+            var result101 = Helpers.IsApproximately(value101, 0.45);
+            Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
         }
 
         [TestMethod]
@@ -139,6 +141,14 @@ namespace BiEntropyLib.Tests
             Assert.AreEqual(BiEntropy.Calculate(arr233), 0.95);
             Assert.AreEqual(BiEntropy.Calculate(arr247), 0.93);
             Assert.AreEqual(BiEntropy.Calculate(arr255), 0.00);
+        }
+
+        [TestMethod]
+        public void CharacterWithoutConstantTest()
+        {
+            var value101 = BiEntropy.Calculate('e', useConstantIfAvailable: false);
+            var result101 = Helpers.IsApproximately(value101, 0.45);
+            Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
         }
 
         [TestMethod]
@@ -470,5 +480,6 @@ namespace BiEntropyLib.Tests
             Assert.IsTrue(result247.passed, $"Percent difference: {result247.difference.ToString("0.#####")} which is greater than 0.001.");
             Assert.IsTrue(result255.passed, $"Percent difference: {result255.difference.ToString("0.#####")} which is greater than 0.001.");
         }
+
     }
 }

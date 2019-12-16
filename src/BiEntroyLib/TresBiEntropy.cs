@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Text;
 using static SMC.Numerics.BiEntropy.Helpers;
 using static System.Math;
 
@@ -57,10 +58,30 @@ namespace SMC.Numerics.BiEntropy
             return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
         }
 
-        //public static double Calculate(decimal value, uint precision = 2, bool useConstantIfAvailable = true)
-        //{
-        //    return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
-        //}
+        public static double Calculate(decimal value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(decimal.GetBits(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(char value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(value, Encoding.UTF8, precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(char value, Encoding encoding, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(encoding.GetBytes(new char[] { value })), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(string value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(value, Encoding.UTF8, precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(string value, Encoding encoding, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(encoding.GetBytes(value)), precision, useConstantIfAvailable);
+        }
 
         public static double Calculate(BitArray value, uint precision = 2, bool useConstantIfAvailable = true)
         {

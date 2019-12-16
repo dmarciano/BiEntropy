@@ -234,6 +234,108 @@ namespace SMC.Numerics.BiEntropy
         {
             return Numerics.BiEntropy.BiEntropy.Calculate(value, precision, useConstantIfAvailable);
         }
+
+        public static double BiEntropy(this decimal value)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value);
+        }
+
+        public static double BiEntropy(this decimal value, uint precision)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, precision);
+        }
+
+        public static double BiEntropy(this decimal value, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this decimal value, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, precision, useConstantIfAvailable);
+        }
+        #endregion
+
+        #region Char/String
+        public static double BiEntropy(this char value)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value);
+        }
+
+        public static double BiEntropy(this char value, Encoding encoding)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding);
+        }
+
+        public static double BiEntropy(this char value, uint precision)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, precision);
+        }
+
+        public static double BiEntropy(this char value, Encoding encoding, uint precision)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding, precision);
+        }
+
+        public static double BiEntropy(this char value, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this char value, Encoding encoding, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this char value, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, precision, useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this char value, Encoding encoding, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding, precision, useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this string value)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value);
+        }
+
+        public static double BiEntropy(this string value, Encoding encoding)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding);
+        }
+
+        public static double BiEntropy(this string value, uint precision)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, precision);
+        }
+
+        public static double BiEntropy(this string value, Encoding encoding, uint precision)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding, precision);
+        }
+
+        public static double BiEntropy(this string value, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this string value, Encoding encoding, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this string value, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, precision, useConstantIfAvailable);
+        }
+
+        public static double BiEntropy(this string value, Encoding encoding, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.BiEntropy.Calculate(value, encoding, precision, useConstantIfAvailable);
+        }
         #endregion
 
         #endregion
@@ -461,6 +563,108 @@ namespace SMC.Numerics.BiEntropy
         public static double TresBiEntropy(this double value, uint precision, bool useConstantIfAvailable)
         {
             return Numerics.BiEntropy.TresBiEntropy.Calculate(value, precision, useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this decimal value)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value);
+        }
+
+        public static double TresBiEntropy(this decimal value, uint precision)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, precision);
+        }
+
+        public static double TresBiEntropy(this decimal value, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this decimal value, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, precision, useConstantIfAvailable);
+        }
+        #endregion
+
+        #region Char/String
+        public static double TresBiEntropy(this char value)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value);
+        }
+
+        public static double TresBiEntropy(this char value, Encoding encoding)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding);
+        }
+
+        public static double TresBiEntropy(this char value, uint precision)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, precision);
+        }
+
+        public static double TresBiEntropy(this char value, Encoding encoding, uint precision)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding, precision);
+        }
+
+        public static double TresBiEntropy(this char value, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this char value, Encoding encoding, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this char value, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, precision, useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this char value, Encoding encoding, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding, precision, useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this string value)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value);
+        }
+
+        public static double TresBiEntropy(this string value, Encoding encoding)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding);
+        }
+
+        public static double TresBiEntropy(this string value, uint precision)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, precision);
+        }
+
+        public static double TresBiEntropy(this string value, Encoding encoding, uint precision)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding, precision);
+        }
+
+        public static double TresBiEntropy(this string value, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this string value, Encoding encoding, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding, useConstantIfAvailable: useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this string value, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, precision, useConstantIfAvailable);
+        }
+
+        public static double TresBiEntropy(this string value, Encoding encoding, uint precision, bool useConstantIfAvailable)
+        {
+            return Numerics.BiEntropy.TresBiEntropy.Calculate(value, encoding, precision, useConstantIfAvailable);
         }
         #endregion
 

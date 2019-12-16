@@ -8,6 +8,14 @@ namespace BiEntropyLib.Tests
     public class TBiEntropyTests
     {
         [TestMethod]
+        public void CharacterConstantTest()
+        {
+            var value101 = TresBiEntropy.Calculate('e', useConstantIfAvailable: true);
+            var result101 = Helpers.IsApproximately(value101, 0.72);
+            Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
+        }
+
+        [TestMethod]
         public void FourBitArrayWithoutConstantTest()
         {
             var arr0 = new BitArray(new[] { true, false, false, true });
@@ -99,6 +107,14 @@ namespace BiEntropyLib.Tests
             Assert.IsTrue(result226.passed, $"Percent difference: {result226.difference.ToString("0.#####")} which is greater than 0.001.");
             Assert.IsTrue(result247.passed, $"Percent difference: {result247.difference.ToString("0.#####")} which is greater than 0.001.");
             Assert.IsTrue(result255.passed, $"Percent difference: {result255.difference.ToString("0.#####")} which is greater than 0.001.");
+        }
+
+        [TestMethod]
+        public void CharacterWithoutConstantTest()
+        {
+            var value101 = TresBiEntropy.Calculate('e', useConstantIfAvailable: false);
+            var result101 = Helpers.IsApproximately(value101, 0.72);
+            Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
         }
 
         [TestMethod]
