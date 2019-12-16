@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Configuration;
 using System.Text;
 using static SMC.Numerics.BiEntropy.Helpers;
 using static System.Math;
@@ -8,6 +9,32 @@ namespace SMC.Numerics.BiEntropy
 {
     public static class TresBiEntropy
     {
+        private static bool _cacheEnabled = false;
+        private static DerivativeCache<double> _cache;
+        public static bool CachingEnabled => _cacheEnabled;
+
+        public static void EnableCache()
+        {
+            _cacheEnabled = true;
+            if (!int.TryParse(ConfigurationManager.AppSettings["slidingExpirationSecond"], out var slidingExpiration))
+            {
+                slidingExpiration = 600;
+            }
+
+            if (!int.TryParse(ConfigurationManager.AppSettings["absoluteExpirationSeconds"], out var absoluteExpiration))
+            {
+                absoluteExpiration = 3600;
+            }
+
+            _cache = new DerivativeCache<double>(slidingExpiration, absoluteExpiration);
+        }
+
+        public static void DisableCache()
+        {
+            _cacheEnabled = false;
+            _cache = null;
+        }
+
         public static double Calculate(sbyte value, uint precision = 2, bool useConstantIfAvailable = true)
         {
             return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
@@ -111,7 +138,7 @@ namespace SMC.Numerics.BiEntropy
 
                 for(var k = 0; k<= n-2; k++)
                 {
-                    var p = CalculateP(value, k);
+                    var p = CalculateP(value, k, _cache);
                     var round = ((-p * Log(p, 2.0)) + (-(1-p) * Log(1-p, 2.0))) * Log(k + 2, 2.0);
 
                     if (!double.IsNaN(round))

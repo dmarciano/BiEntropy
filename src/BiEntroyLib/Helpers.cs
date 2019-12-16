@@ -5,6 +5,16 @@ namespace SMC.Numerics.BiEntropy
 {
     public static class Helpers
     {
+        private static Func<BitArray, int, double> BinaryDerivativeDelegate = (value, k) =>
+        {
+            var derivative = BinaryDerivative(value, k);
+            var ones = 0;
+            for (var i = 0; i < derivative.Count; i++)
+                if (derivative[i]) ones++;
+
+            return ones / (double)derivative.Count;
+        };
+
         public static BitArray BinaryDerivative(BitArray value)
         {
             try
@@ -36,14 +46,12 @@ namespace SMC.Numerics.BiEntropy
             }
         }
 
-        public static double CalculateP(BitArray value, int k)
+        public static double CalculateP(BitArray value, int k, DerivativeCache<double> cache = null)
         {
-            var derivative = BinaryDerivative(value, k);
-            var ones = 0;
-            for (var i = 0; i < derivative.Count; i++)
-                if (derivative[i]) ones++;
-
-            return ones / (double)derivative.Count;
+            if (null == cache)
+                return BinaryDerivativeDelegate(value, k);
+            else
+                return cache.GetOrCreate(new MultiKey(value, k), BinaryDerivativeDelegate).GetAwaiter().GetResult();
         }
 
         public static int BitArrayToInteger(BitArray value)

@@ -383,5 +383,18 @@ namespace BiEntropyLib.Tests
             Assert.IsTrue(result247.passed, $"Percent difference: {result247.difference.ToString("0.#####")} which is greater than 0.001.");
             Assert.IsTrue(result255.passed, $"Percent difference: {result255.difference.ToString("0.#####")} which is greater than 0.001.");
         }
+
+        [TestMethod]
+        public void CacheTest()
+        {
+            TresBiEntropy.EnableCache();
+            var val1 = TresBiEntropy.Calculate("e", useConstantIfAvailable: false);
+            var res1 = Helpers.IsApproximately(val1, 0.72);
+            Assert.IsTrue(res1.passed, $"Percent difference: {res1.difference.ToString("0.#####")} which is greater than 0.001.");
+
+            var val2 = TresBiEntropy.Calculate("e", useConstantIfAvailable: false);
+            var res2 = Helpers.IsApproximately(val1, 0.72);
+            Assert.IsTrue(res2.passed, $"Percent difference: {res2.difference.ToString("0.#####")} which is greater than 0.001.");
+        }
     }
 }
