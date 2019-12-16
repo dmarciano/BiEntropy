@@ -18,6 +18,14 @@ namespace BiEntropyLib.Tests
         }
 
         [TestMethod]
+        public void StringConstantTest()
+        {
+            var value101 = BiEntropy.Calculate("e", useConstantIfAvailable: true);
+            var result101 = Helpers.IsApproximately(value101, 0.45);
+            Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
+        }
+
+        [TestMethod]
         public void TwoBitBitArrayConstantTest()
         {
             var arr0 = new BitArray(new[] { false, false });
@@ -147,6 +155,14 @@ namespace BiEntropyLib.Tests
         public void CharacterWithoutConstantTest()
         {
             var value101 = BiEntropy.Calculate('e', useConstantIfAvailable: false);
+            var result101 = Helpers.IsApproximately(value101, 0.45);
+            Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
+        }
+
+        [TestMethod]
+        public void StringWithoutConstantTest()
+        {
+            var value101 = BiEntropy.Calculate("e", useConstantIfAvailable: false);
             var result101 = Helpers.IsApproximately(value101, 0.45);
             Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
         }
