@@ -48,7 +48,7 @@ namespace BiEntropyLib.Tests
         }
 
         [TestMethod]
-        public void FourBitBitArrayConstantTest()
+        public void FourBitArrayConstantTest()
         {
             var arr0 = new BitArray(new[] { false, false, false, false });
             var arr1 = new BitArray(new[] { false, false, false, true });
@@ -92,7 +92,7 @@ namespace BiEntropyLib.Tests
         }
 
         [TestMethod]
-        public void EightBitBitArrayConstantTest()
+        public void EightBitArrayConstantTest()
         {
             var arr0 = new BitArray(new[] { false, false, false, false, false, false, false, false });
             var arr10 = new BitArray(new[] { false, false, false, false, true, false, true, false });
@@ -136,7 +136,7 @@ namespace BiEntropyLib.Tests
         }
 
         [TestMethod]
-        public void TwoBitBitArrayWithoutConstantTest()
+        public void TwoBitArrayWithoutConstantTest()
         {
             var arr0 = new BitArray(new[] { false, false });
             var arr1 = new BitArray(new[] { false, true });
@@ -254,7 +254,7 @@ namespace BiEntropyLib.Tests
         }
 
         [TestMethod]
-        public void EightBitBitArrayWithoutConstantTest()
+        public void EightBitArrayWithoutConstantTest()
         {
             var arr0 = new BitArray(new[] { false, false, false, false, false, false, false, false });
             var arr10 = new BitArray(new[] { false, false, false, false, true, false, true, false });
@@ -275,6 +275,134 @@ namespace BiEntropyLib.Tests
             var arr233 = new BitArray(new[] { true, true, true, false, true, false, false, true });
             var arr247 = new BitArray(new[] { true, true, true, true, false, true, true, true });
             var arr255 = new BitArray(new[] { true, true, true, true, true, true, true, true });
+
+            var value0 = BiEntropy.Calculate(arr0, useConstantIfAvailable: false);
+            var value10 = BiEntropy.Calculate(arr10, useConstantIfAvailable: false);
+            var value15 = BiEntropy.Calculate(arr15, useConstantIfAvailable: false);
+            var value25 = BiEntropy.Calculate(arr25, useConstantIfAvailable: false);
+
+            var value50 = BiEntropy.Calculate(arr50, useConstantIfAvailable: false);
+            var value55 = BiEntropy.Calculate(arr55, useConstantIfAvailable: false);
+            var value75 = BiEntropy.Calculate(arr75, useConstantIfAvailable: false);
+            var value88 = BiEntropy.Calculate(arr88, useConstantIfAvailable: false);
+
+            var value101 = BiEntropy.Calculate(arr101, useConstantIfAvailable: false);
+            var value156 = BiEntropy.Calculate(arr156, useConstantIfAvailable: false);
+            var value175 = BiEntropy.Calculate(arr175, useConstantIfAvailable: false);
+            var value199 = BiEntropy.Calculate(arr199, useConstantIfAvailable: false);
+
+            var value200 = BiEntropy.Calculate(arr200, useConstantIfAvailable: false);
+            var value233 = BiEntropy.Calculate(arr233, useConstantIfAvailable: false);
+            var value247 = BiEntropy.Calculate(arr247, useConstantIfAvailable: false);
+            var value255 = BiEntropy.Calculate(arr255, useConstantIfAvailable: false);
+
+            var result0 = Helpers.IsApproximately(value0, 0.00);
+            var result10 = Helpers.IsApproximately(value10, 0.23);
+            var result15 = Helpers.IsApproximately(value15, 0.11);
+            var result25 = Helpers.IsApproximately(value25, 0.93);
+
+            var result50 = Helpers.IsApproximately(value50, 0.93);
+            var result55 = Helpers.IsApproximately(value55, 0.95);
+            var result75 = Helpers.IsApproximately(value75, 0.11);
+            var result88 = Helpers.IsApproximately(value88, 0.95);
+
+            var result101 = Helpers.IsApproximately(value101, 0.45);
+            var result156 = Helpers.IsApproximately(value156, 0.23);
+            var result175 = Helpers.IsApproximately(value175, 0.23);
+            var result199 = Helpers.IsApproximately(value199, 0.95);
+
+            var result200 = Helpers.IsApproximately(value200, 0.95);
+            var result233 = Helpers.IsApproximately(value233, 0.95);
+            var result247 = Helpers.IsApproximately(value247, 0.93);
+            var result255 = Helpers.IsApproximately(value255, 0.00);
+
+            Assert.IsTrue(result0.passed, $"Percent difference: {result0.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result10.passed, $"Percent difference: {result10.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result15.passed, $"Percent difference: {result15.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result25.passed, $"Percent difference: {result25.difference.ToString("0.#####")} which is greater than 0.001.");
+
+            Assert.IsTrue(result50.passed, $"Percent difference: {result50.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result55.passed, $"Percent difference: {result55.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result75.passed, $"Percent difference: {result75.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result88.passed, $"Percent difference: {result88.difference.ToString("0.#####")} which is greater than 0.001.");
+
+            Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result156.passed, $"Percent difference: {result156.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result175.passed, $"Percent difference: {result175.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result199.passed, $"Percent difference: {result199.difference.ToString("0.#####")} which is greater than 0.001.");
+
+            Assert.IsTrue(result200.passed, $"Percent difference: {result200.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result233.passed, $"Percent difference: {result233.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result247.passed, $"Percent difference: {result247.difference.ToString("0.#####")} which is greater than 0.001.");
+            Assert.IsTrue(result255.passed, $"Percent difference: {result255.difference.ToString("0.#####")} which is greater than 0.001.");
+        }
+
+        [TestMethod]
+        public void ByteConstantTest()
+        {
+            var arr0 = (byte)0x00;
+            var arr10 = (byte)0x0A;
+            var arr15 = (byte)0x0F;
+            var arr25 = (byte)0x19;
+
+            var arr50 = (byte)0x32;
+            var arr55 = (byte)0x37;
+            var arr75 = (byte)0x4B;
+            var arr88 = (byte)0x58;
+
+            var arr101 = (byte)0x65;
+            var arr156 = (byte)0x9C;
+            var arr175 = (byte)0xAF;
+            var arr199 = (byte)0xC7;
+
+            var arr200 = (byte)0xC8;
+            var arr233 = (byte)0xE9;
+            var arr247 = (byte)0xF7;
+            var arr255 = (byte)0xFF;
+
+            Assert.AreEqual(BiEntropy.Calculate(arr0), 0.00);
+            Assert.AreEqual(BiEntropy.Calculate(arr10), 0.23);
+            Assert.AreEqual(BiEntropy.Calculate(arr15), 0.11);
+            Assert.AreEqual(BiEntropy.Calculate(arr25), 0.93);
+
+            Assert.AreEqual(BiEntropy.Calculate(arr50), 0.93);
+            Assert.AreEqual(BiEntropy.Calculate(arr55), 0.95);
+            Assert.AreEqual(BiEntropy.Calculate(arr75), 0.11);
+            Assert.AreEqual(BiEntropy.Calculate(arr88), 0.95);
+
+            Assert.AreEqual(BiEntropy.Calculate(arr101), 0.45);
+            Assert.AreEqual(BiEntropy.Calculate(arr156), 0.23);
+            Assert.AreEqual(BiEntropy.Calculate(arr175), 0.23);
+            Assert.AreEqual(BiEntropy.Calculate(arr199), 0.95);
+
+            Assert.AreEqual(BiEntropy.Calculate(arr200), 0.95);
+            Assert.AreEqual(BiEntropy.Calculate(arr233), 0.95);
+            Assert.AreEqual(BiEntropy.Calculate(arr247), 0.93);
+            Assert.AreEqual(BiEntropy.Calculate(arr255), 0.00);
+        }
+
+        [TestMethod]
+        public void ByteWithoutConstantTest()
+        {
+            var arr0 = (byte)0x00;
+            var arr10 = (byte)0x0A;
+            var arr15 = (byte)0x0F;
+            var arr25 = (byte)0x19;
+
+            var arr50 = (byte)0x32;
+            var arr55 = (byte)0x37;
+            var arr75 = (byte)0x4B;
+            var arr88 = (byte)0x58;
+
+            var arr101 = (byte)0x65;
+            var arr156 = (byte)0x9C;
+            var arr175 = (byte)0xAF;
+            var arr199 = (byte)0xC7;
+
+            var arr200 = (byte)0xC8;
+            var arr233 = (byte)0xE9;
+            var arr247 = (byte)0xF7;
+            var arr255 = (byte)0xFF;
 
             var value0 = BiEntropy.Calculate(arr0, useConstantIfAvailable: false);
             var value10 = BiEntropy.Calculate(arr10, useConstantIfAvailable: false);

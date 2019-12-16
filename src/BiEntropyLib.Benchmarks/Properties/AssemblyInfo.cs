@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BiEntroyLib")]
-[assembly: AssemblyDescription("A .NET implementation of the BiEntropy and Tres BiEntropy algorithm for calculating the approximate entropy of a finite binary string.")]
+[assembly: AssemblyTitle("BiEntropyLib.Benchmarks")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Sci-Med Coding")]
-[assembly: AssemblyProduct("BiEntroy Library")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("BiEntropyLib.Benchmarks")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
-[assembly: AssemblyTrademark("Trademark ™ 2019")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("85a96e2f-3809-4ed0-abd7-2428a457ea22")]
+[assembly: Guid("c3505755-b24c-45b3-b395-96dcaa071710")]
 
 // Version information for an assembly consists of the following four values:
 //

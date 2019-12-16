@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static SMC.Numerics.BiEntropy.Helpers;
+using static System.Math;
 
 namespace SMC.Numerics.BiEntropy
 {
     public static class TresBiEntropy
     {
+        public static double Calculate(byte value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(new byte[] { value }), precision, useConstantIfAvailable);
+        }
+
         public static double Calculate(BitArray value, uint precision = 2, bool useConstantIfAvailable = true)
         {
             try
@@ -32,12 +34,20 @@ namespace SMC.Numerics.BiEntropy
 
                 var multiplerSum = 0.0;
                 for (var k = 0; k <= n - 2; k++)
-                    multiplerSum += Math.Log(k + 2, 2);
+                    multiplerSum += Log(k + 2, 2);
                 var multiplier = 1.0 / multiplerSum;
 
 
+                for(var k = 0; k<= n-2; k++)
+                {
+                    var p = CalculateP(value, k);
+                    var round = ((-p * Log(p, 2.0)) + (-(1-p) * Log(1-p, 2.0))) * Log(k + 2, 2.0);
 
-                return entropy;
+                    if (!double.IsNaN(round))
+                        entropy += round;
+                }
+
+                return Round(entropy *= multiplier, (int)precision);
             }
             catch (Exception ex)
             {

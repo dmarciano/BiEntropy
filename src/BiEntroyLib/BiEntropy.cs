@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using static SMC.Numerics.BiEntropy.Helpers;
 using static System.Math;
 
@@ -7,6 +8,11 @@ namespace SMC.Numerics.BiEntropy
 {
     public static class BiEntropy
     {
+        public static double Calculate(byte value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(new byte[] { value }), precision, useConstantIfAvailable);
+        }
+
         public static double Calculate(BitArray value, uint precision = 2, bool useConstantIfAvailable = true)
         {
             try
