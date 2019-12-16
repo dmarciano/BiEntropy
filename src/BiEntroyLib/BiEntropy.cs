@@ -8,10 +8,60 @@ namespace SMC.Numerics.BiEntropy
 {
     public static class BiEntropy
     {
+        public static double Calculate(sbyte value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
         public static double Calculate(byte value, uint precision = 2, bool useConstantIfAvailable = true)
         {
             return Calculate(new BitArray(new byte[] { value }), precision, useConstantIfAvailable);
         }
+
+        public static double Calculate(short value, uint precision =2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(ushort value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(int value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(uint value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(long value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(ulong value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(float value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        public static double Calculate(double value, uint precision = 2, bool useConstantIfAvailable = true)
+        {
+            return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        }
+
+        //public static double Calculate(decimal value, uint precision = 2, bool useConstantIfAvailable = true)
+        //{
+        //    return Calculate(new BitArray(BitConverter.GetBytes(value)), precision, useConstantIfAvailable);
+        //}
 
         public static double Calculate(BitArray value, uint precision = 2, bool useConstantIfAvailable = true)
         {

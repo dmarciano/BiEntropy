@@ -10,6 +10,12 @@ namespace BiEntropyLib.Tests
     public class BiEntropyTests
     {
         [TestMethod]
+        public void AAA()
+        {
+                var result = BiEntropy.Calculate((double)18446.744073709551616);
+        }
+
+        [TestMethod]
         public void TwoBitBitArrayConstantTest()
         {
             var arr0 = new BitArray(new[] { false, false });
