@@ -78,10 +78,6 @@ in order to determine how closely this library came to matching this ideal run t
 |1024|1048576|
 |2048|4194304|
 |4096|16777216|
-|8192|67108864|
-|16384|268435456|
-|32768|1073741824|
-|65536|4294967296|
 
 For these benchmarks, the ```TresBiEntropy.Calculate()```  method was used, since any binary string with ```n > 32``` would automatically be forwarded to this method anyways.  Also, caching was enabled to get the best performance possible.  The
 following is the ideal vs. actual times graphed against each other:

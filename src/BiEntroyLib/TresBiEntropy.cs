@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Configuration;
 using System.Text;
+using System.Threading.Tasks;
 using static SMC.Numerics.BiEntropy.Helpers;
 using static System.Math;
 
@@ -118,7 +119,7 @@ namespace SMC.Numerics.BiEntropy
                 if (value.Length == 2)
                     return Constants.BIENTROPY_2BITS[BitArrayToInteger(value)];
 
-                if(useConstantIfAvailable && (value.Length==4 || value.Length == 8))
+                if (useConstantIfAvailable && (value.Length == 4 || value.Length == 8))
                 {
                     var number = BitArrayToInteger(value);
                     if (value.Length == 4)
@@ -135,14 +136,32 @@ namespace SMC.Numerics.BiEntropy
                     multiplerSum += Log(k + 2, 2);
                 var multiplier = 1.0 / multiplerSum;
 
-
-                for(var k = 0; k<= n-2; k++)
+                if (n >= 1024)
                 {
-                    var p = CalculateP(value, k, _cache);
-                    var round = ((-p * Log(p, 2.0)) + (-(1-p) * Log(1-p, 2.0))) * Log(k + 2, 2.0);
+                    var wasCacheEnabled = CachingEnabled;
+                    if (!CachingEnabled) EnableCache();
 
-                    if (!double.IsNaN(round))
-                        entropy += round;
+                    Parallel.For(0, n - 1, k =>
+                    {
+                        var p = CalculateP(value, k, _cache);
+                        var round = ((-p * Log(p, 2.0)) + (-(1 - p) * Log(1 - p, 2.0))) * Log(k + 2, 2.0);
+
+                        if (!double.IsNaN(round))
+                            Helpers.Add(ref entropy, round);
+                    });
+
+                    if (!wasCacheEnabled) DisableCache();
+                }
+                else
+                {
+                    for (var k = 0; k <= n - 2; k++)
+                    {
+                        var p = CalculateP(value, k, _cache);
+                        var round = ((-p * Log(p, 2.0)) + (-(1 - p) * Log(1 - p, 2.0))) * Log(k + 2, 2.0);
+
+                        if (!double.IsNaN(round))
+                            entropy += round;
+                    }
                 }
 
                 return Round(entropy *= multiplier, (int)precision);

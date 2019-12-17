@@ -6,8 +6,7 @@ namespace BiEntropyLib.Benchmarks
     {
         static void Main(string[] args)
         {
-            var benchmarkWithCache = BenchmarkRunner.Run<BenchmarkWithCache>();
-            //var benchmarkWithoutCache = BenchmarkRunner.Run<BenchmarkWithoutCache>();
+            var benchmark = BenchmarkRunner.Run<Benchmark>();
         }
     }
 }

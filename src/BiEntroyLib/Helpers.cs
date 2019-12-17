@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Threading;
 
 namespace SMC.Numerics.BiEntropy
 {
@@ -23,11 +24,11 @@ namespace SMC.Numerics.BiEntropy
                 for (var index = 0; index < value.Length - 1; index++)
                     result[index] = value[index] ^ value[index + 1];
 
-                return new BitArray(result);//.Some();
+                return new BitArray(result);
             }
             catch
             {
-                return new BitArray(0);// Option.None<BitArray>();
+                return new BitArray(0);
             }
         }
 
@@ -38,7 +39,7 @@ namespace SMC.Numerics.BiEntropy
                 if (0 == k) return value;
                 if (1 == k) return BinaryDerivative(value);
 
-                return BinaryDerivative(BinaryDerivative(value, k - 1));//.ValueOr(new BitArray(0)));
+                return BinaryDerivative(BinaryDerivative(value, k - 1));
             }
             catch
             {
@@ -62,6 +63,19 @@ namespace SMC.Numerics.BiEntropy
             var array = new int[1];
             value.CopyTo(array, 0);
             return array[0];
+        }
+
+        public static double Add(ref double location1, double value)
+        {
+            double newCurrentValue = location1;
+            while (true)
+            {
+                double currentValue = newCurrentValue;
+                double newValue = currentValue + value;
+                newCurrentValue = Interlocked.CompareExchange(ref location1, newValue, currentValue);
+                if (newCurrentValue == currentValue)
+                    return newValue;
+            }
         }
     }
 }
