@@ -14,6 +14,7 @@ namespace BiEntropyLib.Tests
             var result101 = Helpers.IsApproximately(value101, 0.72);
             Assert.IsTrue(result101.passed, $"Percent difference: {result101.difference.ToString("0.#####")} which is greater than 0.001.");
         }
+
         [TestMethod]
         public void StringConstantTest()
         {
