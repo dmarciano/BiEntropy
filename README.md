@@ -58,7 +58,7 @@ This can help reduce the calculation time at the expense of using more memory.  
 The ```slidingExpirationSeconds``` indicates for how many seconds an entry is kept in the cache.  If the same entry is access within this sliding time period, the expiration time is extended by this amount again.  The ```absoluteExpirationSeconds```
 indicates after how much time, regardless if the entry was still accessed again, the entry is removed from the cache.  Depending on feedback and user's experiences, exactly how this cache is implemented and used may change in the future.
 
-## Unit Test
+## Unit Tests
 The unit tests included in the solution covers all the test vectors provided in the original paper.  The units tests have been designed to ensure that the values calculated by the library are within
 0.1% of the test vectors when rounded to two decimal places, although in most cases the values (when rounded) are exactly the same as the values in the paper.
 
